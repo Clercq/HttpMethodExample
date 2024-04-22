@@ -12,19 +12,20 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import pro.gravit.launcher.ClientPermissions;
-import pro.gravit.launcher.events.request.GetAvailabilityAuthRequestEvent;
-import pro.gravit.launcher.profiles.Texture;
-import pro.gravit.launcher.request.auth.AuthRequest;
-import pro.gravit.launcher.request.auth.details.AuthPasswordDetails;
-import pro.gravit.launcher.request.auth.details.AuthTotpDetails;
-import pro.gravit.launcher.request.auth.password.Auth2FAPassword;
-import pro.gravit.launcher.request.auth.password.AuthPlainPassword;
-import pro.gravit.launcher.request.auth.password.AuthTOTPPassword;
-import pro.gravit.launcher.request.secure.HardwareReportRequest;
+import pro.gravit.launcher.base.ClientPermissions;
+import pro.gravit.launcher.base.events.request.GetAvailabilityAuthRequestEvent;
+import pro.gravit.launcher.base.profiles.Texture;
+import pro.gravit.launcher.base.request.auth.AuthRequest;
+import pro.gravit.launcher.base.request.auth.details.AuthPasswordDetails;
+import pro.gravit.launcher.base.request.auth.details.AuthTotpDetails;
+import pro.gravit.launcher.base.request.auth.password.Auth2FAPassword;
+import pro.gravit.launcher.base.request.auth.password.AuthPlainPassword;
+import pro.gravit.launcher.base.request.auth.password.AuthTOTPPassword;
+import pro.gravit.launcher.base.request.secure.HardwareReportRequest;
 import pro.gravit.launchserver.HttpRequester;
 import pro.gravit.launchserver.LaunchServer;
 import pro.gravit.launchserver.auth.AuthException;
+import pro.gravit.launchserver.auth.AuthProviderPair;
 import pro.gravit.launchserver.auth.core.AuthCoreProvider;
 import pro.gravit.launchserver.auth.core.User;
 import pro.gravit.launchserver.auth.core.UserSession;
@@ -178,7 +179,7 @@ public class MyHttpAuthCoreProvider extends AuthCoreProvider implements AuthSupp
     }
 
     @Override
-    public void init(LaunchServer server) {
+    public void init(LaunchServer server, AuthProviderPair pair) {
         requester = new HttpRequester();
     }
 
